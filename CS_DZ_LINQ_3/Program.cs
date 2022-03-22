@@ -45,34 +45,35 @@ namespace CS_DZ_LINQ_3
         static void SorteredName(List<Patient> patients)
         {
             Console.Clear();
-            var sorteredNamePatients = patients.OrderBy(patient => patient.Name);
-            foreach (var patient in sorteredNamePatients)
-            {
-                Console.WriteLine(patient.Name + " " + patient.Age + " " + patient.Disease);
-            }
-            Console.ReadKey();
-            Console.Clear();
+
+            var sorteredNamePatients = patients.OrderBy(patient => patient.Name).ToList();
+
+            ShowSorteredPatients(sorteredNamePatients);
         }
 
         static void SorteredAge(List<Patient> patients)
         {
             Console.Clear();
-            var sorteredAgePatients = patients.OrderBy(patient => patient.Age);
-            foreach (var patient in sorteredAgePatients)
-            {
-                Console.WriteLine(patient.Name + " " + patient.Age + " " + patient.Disease);
-            }
-            Console.ReadKey();
-            Console.Clear();
+
+            var sorteredAgePatients = patients.OrderBy(patient => patient.Age).ToList();
+
+            ShowSorteredPatients(sorteredAgePatients);
         }
 
         static void SorteredDisease(List<Patient> patients)
         {
             Console.Clear();
             Console.WriteLine("Введите заболевание: ");
+
             string userInputDisease = Console.ReadLine();
-            var filteredDiseasePatients = patients.Where(patient => patient.Disease == userInputDisease).OrderBy(patient => patient.Disease);
-            foreach (var patient in filteredDiseasePatients)
+            var filteredDiseasePatients = patients.Where(patient => patient.Disease == userInputDisease).OrderBy(patient => patient.Disease).ToList();
+            
+            ShowSorteredPatients(filteredDiseasePatients);
+        }
+
+        static void ShowSorteredPatients(List<Patient> patients)
+        {
+            foreach (var patient in patients)
             {
                 Console.WriteLine(patient.Name + " " + patient.Age + " " + patient.Disease);
             }
