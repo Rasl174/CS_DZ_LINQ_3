@@ -30,39 +30,54 @@ namespace CS_DZ_LINQ_3
                 switch (userInput)
                 {
                     case "1":
-                        Console.Clear();
-                        var sorteredNamePatients = patients.OrderBy(patient => patient.Name);
-                        foreach (var patient in sorteredNamePatients)
-                        {
-                            Console.WriteLine(patient.Name + " " + patient.Age + " " + patient.Disease);
-                        }
-                        Console.ReadKey();
-                        Console.Clear();
+                        SorteredName(patients);
                         break;
                     case "2":
-                        Console.Clear();
-                        var sorteredAgePatients = patients.OrderBy(patient => patient.Age);
-                        foreach (var patient in sorteredAgePatients)
-                        {
-                            Console.WriteLine(patient.Name + " " + patient.Age + " " + patient.Disease);
-                        }
-                        Console.ReadKey();
-                        Console.Clear();
+                        SorteredAge(patients);
                         break;
                     case "3":
-                        Console.Clear();
-                        Console.WriteLine("Введите заболевание: ");
-                        string userInputDisease = Console.ReadLine();
-                        var filteredDiseasePatients = patients.Where(patient => patient.Disease == userInputDisease).OrderBy(patient => patient.Disease);
-                        foreach (var patient in filteredDiseasePatients)
-                        {
-                            Console.WriteLine(patient.Name + " " + patient.Age + " " + patient.Disease);
-                        }
-                        Console.ReadKey();
-                        Console.Clear();
+                        SorteredDisease(patients);
                         break;
                 }
             }
+        }
+
+        static void SorteredName(List<Patient> patients)
+        {
+            Console.Clear();
+            var sorteredNamePatients = patients.OrderBy(patient => patient.Name);
+            foreach (var patient in sorteredNamePatients)
+            {
+                Console.WriteLine(patient.Name + " " + patient.Age + " " + patient.Disease);
+            }
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        static void SorteredAge(List<Patient> patients)
+        {
+            Console.Clear();
+            var sorteredAgePatients = patients.OrderBy(patient => patient.Age);
+            foreach (var patient in sorteredAgePatients)
+            {
+                Console.WriteLine(patient.Name + " " + patient.Age + " " + patient.Disease);
+            }
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        static void SorteredDisease(List<Patient> patients)
+        {
+            Console.Clear();
+            Console.WriteLine("Введите заболевание: ");
+            string userInputDisease = Console.ReadLine();
+            var filteredDiseasePatients = patients.Where(patient => patient.Disease == userInputDisease).OrderBy(patient => patient.Disease);
+            foreach (var patient in filteredDiseasePatients)
+            {
+                Console.WriteLine(patient.Name + " " + patient.Age + " " + patient.Disease);
+            }
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 
